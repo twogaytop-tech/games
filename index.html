@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trending Browser Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background:#0f0f0f;
+    color:#eee;
+    margin:0;
+}
+.container {
+    max-width:720px;
+    margin:auto;
+    padding:24px;
+}
+h1 { font-size:26px; }
+p { color:#ccc; line-height:1.6; }
+.btn {
+    margin-top:24px;
+    width:100%;
+    padding:14px;
+    background:#ff4757;
+    border:none;
+    color:#fff;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.btn:hover { background:#ff6b81; }
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Trending Browser Games</h1>
+<p>Popular interactive games people are playing right now. Works on mobile & desktop.</p>
+
+<button class="btn" id="goBtn">▶ Play Now</button>
+
+<p style="font-size:12px;margin-top:30px;color:#777;text-align:center;">
+For users 18+
+</p>
+</div>
+
+<script>
+document.getElementById("goBtn").onclick = function () {
+    window.location.href = "YOUR_SMARTLINK_URL";
+};
+</script>
+</body>
+</html>
