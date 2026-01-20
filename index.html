@@ -17,8 +17,13 @@ body {
     margin:auto;
     padding:24px;
 }
-h1 { font-size:26px; }
-p { color:#ccc; line-height:1.6; }
+h1 {
+    font-size:26px;
+}
+p {
+    color:#ccc;
+    line-height:1.6;
+}
 .btn {
     margin-top:24px;
     width:100%;
@@ -30,26 +35,69 @@ p { color:#ccc; line-height:1.6; }
     border-radius:8px;
     cursor:pointer;
 }
-.btn:hover { background:#ff6b81; }
+.btn:hover {
+    background:#ff6b81;
+}
+.footer {
+    margin-top:30px;
+    font-size:12px;
+    color:#777;
+    text-align:center;
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
-<h1>Trending Browser Games</h1>
-<p>Popular interactive games people are playing right now. Works on mobile & desktop.</p>
+    <h1>Trending Browser Games</h1>
 
-<button class="btn" id="goBtn">▶ Play Now</button>
+    <p>
+        Popular interactive browser games people are playing right now.
+        No download required. Works on mobile & desktop.
+    </p>
 
-<p style="font-size:12px;margin-top:30px;color:#777;text-align:center;">
-For users 18+
-</p>
+    <button class="btn" id="goBtn">▶ Play Now</button>
+
+    <div class="footer">
+        For users 18+
+    </div>
 </div>
 
 <script>
-document.getElementById("goBtn").onclick = function () {
-    window.location.href = "YOUR_SMARTLINK_URL";
+/* ========= 配置你的 Smartlink（只改这里） ========= */
+const links = {
+    US: "https://safeoffers.pro/a/Wyv9u8xNhx97V",
+    CA: "https://safeoffers.pro/a/Wyv9u8xNhx97V",
+    AU: "https://safeoffers.pro/a/Wyv9u8xNhx97V",
+    DEFAULT: "https://safeoffers.pro/a/Wyv9u8xNhx97V"
 };
+/* ============================================== */
+
+let ready = false;
+
+/* 模拟真人停留时间（防扫描） */
+setTimeout(() => {
+    ready = true;
+}, 2000);
+
+/* GEO 判断 */
+fetch("https://ipapi.co/json/")
+.then(res => res.json())
+.then(data => {
+    const country = data.country_code;
+    document.getElementById("goBtn").onclick = function () {
+        if (!ready) return;
+        window.location.href = links[country] || links.DEFAULT;
+    };
+})
+.catch(() => {
+    document.getElementById("goBtn").onclick = function () {
+        if (!ready) return;
+        window.location.href = links.DEFAULT;
+    };
+});
 </script>
+
 </body>
 </html>
