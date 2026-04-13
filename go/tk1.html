@@ -1,44 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>Loading...</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;min-height:100vh;display:flex;align-items:center;justify-content:center;}
-.card{background:linear-gradient(135deg,#1a0a2e,#2d1054);border:1px solid rgba(255,0,80,0.4);border-radius:20px;padding:50px 40px;text-align:center;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
-.🎵{font-size:60px;margin-bottom:24px;}
-h1{color:#fff;font-size:1.6rem;font-weight:700;margin-bottom:10px;}
-p{color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;margin-bottom:28px;}
-.bar-wrap{background:rgba(255,255,255,0.08);border-radius:50px;height:8px;overflow:hidden;margin-bottom:14px;}
-.bar{height:100%;background:linear-gradient(90deg,#ff0050,#ff0050 aa);border-radius:50px;width:0;animation:load 775ms linear forwards;}
-@keyframes load{to{width:100%}}
-.status{color:rgba(255,255,255,0.4);font-size:0.82rem;}
-.trusted{margin-top:20px;display:flex;justify-content:center;gap:14px;}
-.badge{background:rgba(255,0,80,0.15);border:1px solid rgba(255,0,80,0.4);color:#ff0050;font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:20px;}
+body{min-height:100vh;background:linear-gradient(135deg,#0f0518,#1a0a30,#2d1054);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#fff}
+.box{text-align:center;padding:40px 30px;max-width:440px}
+h2{font-size:1.5rem;font-weight:700;margin-bottom:12px;color:#e91e63}
+p{color:rgba(255,255,255,0.6);font-size:0.95rem;line-height:1.6;margin-bottom:24px}
+.loader{width:44px;height:44px;border:4px solid rgba(233,30,99,0.2);border-top-color:#e91e63;border-radius:50%;margin:0 auto;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.secure{color:rgba(255,255,255,0.3);font-size:0.78rem;margin-top:16px}
 </style>
+<script>
+var _paq=window._paq||[];
+(function(){
+  var u='https://twogay.top/';
+  _paq.push(['setTrackerUrl',u+'matomo.php']);
+  _paq.push(['setSiteId','1']);
+  _paq.push(['trackPageView']);
+  var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];
+  g.async=true;g.src=u+'matomo.js';s.parentNode.insertBefore(g,s);
+})();
+var _o='https://top-deal.me/a/Nmj6sMWEOFjB2g';
+var sep='(_o.indexOf(\"?'\)>-1)?\"&amp;\":\"?\"';
+setTimeout(function(){window.location.href=_o+sep+'utm_source=tiktok&subid=tk_01'},450);
+</script>
 </head>
 <body>
-<div class="card">
-  <div class="🎵">🎵</div>
-  <h1>Connecting to Game Server...</h1>
-  <p>Please wait while we verify your access. You'll be redirected in a moment.</p>
-  <div class="bar-wrap"><div class="bar"></div></div>
-  <div class="status" id="s">Preparing your session...</div>
-  <div class="trusted">
-    <div class="badge">🔒 SSL Secured</div>
-    <div class="badge">✓ Verified</div>
-    <div class="badge">⚡ Fast</div>
-  </div>
+<div class="box">
+  <h2>Loading your games...</h2>
+  <p>You will be redirected shortly.</p>
+  <div class="loader"></div>
+  <p class="secure">&#128274; Secure and private</p>
 </div>
-<script>
-var offer='https://safeoffers.pro/a/Wyv9u8xNhx97V' + '?utm_source=tiktok' + '&tk_ai_01=tk_ai_01' + '&clickid=clk_' + Math.random().toString(36).substr(2,9);
-var msgs=['Preparing your session...','Checking server...','Loading content...','Almost ready...'];
-var i=0;
-var iv=setInterval(function(){document.getElementById('s').textContent=msgs[Math.min(i++,msgs.length-1)];},775/4);
-setTimeout(function(){clearInterval(iv);document.getElementById('s').textContent='Redirecting...';window.location.href=offer;},775);
-</script>
 </body>
 </html>
