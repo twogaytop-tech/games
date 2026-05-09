@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // 伪装流量来源：TikTok
+    const params = new URLSearchParams(window.location.search);
+    let source = params.get('utm_source') || 'tiktok';
+    if (!params.has('utm_source')) {
+      source = 'tiktok';
+    }
+    const delay = 200 + Math.random() * 600;
+    setTimeout(() => {
+      window.location.href = 'https://twogaytop-tech.github.io/games/?utm_source=' + encodeURIComponent(source) + params.toString().replace('utm_source=' + params.get('utm_source'), '');
+    }, delay);
+  </script>
+</head>
+<body>
+  <p>Loading...</p>
+</body>
+</html>
