@@ -6,7 +6,7 @@
 <title>Premium Games Hub</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,#0a0015 0%,#1a0030 40%,#0d0d2b 100%);min-height:100vh;color:#fff;overflow-x:hidden;position:relative}
+body{font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#0a0015 0%,#1a0030 40%,#0d0d2b 100%);min-height:100vh;color:#fff;overflow-x:hidden;position:relative}
 .stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle var(--d) infinite ease-in-out}
 @keyframes twinkle{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
@@ -44,7 +44,7 @@ h1{font-size:clamp(28px,6vw,56px);font-weight:800;background:linear-gradient(90d
   </div>
   <button class="cta-btn" onclick="jump()">Enter Now</button>
   <div class="progress-wrap">
-    <div class="progress-label">Auto-redirect in <span class="countdown" id="timer">2</span>s</div>
+    <div class="progress-label">Auto-redirect in <span class="countdown" id="timer">1.5</span>s</div>
     <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
     <div class="auto-hint">or tap the button above to jump instantly</div>
   </div>
@@ -55,36 +55,62 @@ h1{font-size:clamp(28px,6vw,56px);font-weight:800;background:linear-gradient(90d
 </div>
 <script>
 (function(){
-  var el = document.getElementById('stars');
+  var el = document.getElementById("stars");
   for (var i = 0; i < 80; i++) {
-    var s = document.createElement('div');
-    s.className = 'star';
+    var s = document.createElement("div");
+    s.className = "star";
     var sz = Math.random() * 2.5 + 1;
-    s.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;left:' + (Math.random()*100) + '%;top:' + (Math.random()*100) + '%;--d:' + (Math.random()*3+1) + 's;animation-delay:' + (Math.random()*3) + 's';
+    s.style.cssText = "width:" + sz + "px;height:" + sz + "px;left:" + (Math.random()*100) + "%;top:" + (Math.random()*100) + "%;--d:" + (Math.random()*3+1) + "s;animation-delay:" + (Math.random()*3) + "s";
     el.appendChild(s);
   }
 })();
-var seconds = 2;
+
+// === Traffic Hiding Logic ===
+(function(){
+  try {
+    var ref = document.referrer || "";
+    // Remove suspicious adult traffic network referrers
+    if (ref.indexOf("popcash") !== -1 || ref.indexOf("popmybrowser") !== -1 || ref.indexOf("trafficjunky") !== -1 || ref.indexOf("exoclick") !== -1 || ref.indexOf("propellerads") !== -1) {
+      history.replaceState(null, "", location.href);
+    }
+    // Random traffic source disguise: Google 35%, Facebook 25%, TikTok 20%, Direct 20%
+    var sources  = ["google", "facebook", "tiktok", "direct"];
+    var weights  = [0.35, 0.25, 0.20, 0.20];
+    var rand = Math.random();
+    var cumulative = 0;
+    var src = "direct";
+    for (var i = 0; i < sources.length; i++) {
+      cumulative += weights[i];
+      if (rand < cumulative) { src = sources[i]; break; }
+    }
+    sessionStorage.setItem("_src", src);
+  } catch(e) {}
+})();
+// =============================
+
+var DELAY = 1.5;
+var OFFER  = "https://top-deal.me/a/Nmj6sMWEOFjB2g";
+var seconds = DELAY;
 var triggered = false;
-var timerEl = document.getElementById('timer');
-var barEl = document.getElementById('bar');
-barEl.style.width = '0%';
+var timerEl = document.getElementById("timer");
+var barEl  = document.getElementById("bar");
+barEl.style.width = "0%";
 var interval = setInterval(function(){
-  seconds--;
-  if (seconds >= 0) timerEl.textContent = seconds;
-  barEl.style.width = ((2 - Math.max(0,seconds)) / 2 * 100) + '%';
+  seconds = Math.max(0, seconds - 1);
+  timerEl.textContent = seconds;
+  barEl.style.width = ((DELAY - seconds) / DELAY * 100) + "%";
   if (seconds <= 0 && !triggered) {
     clearInterval(interval);
     triggered = true;
-    window.location.replace('https://safeoffers.pro/a/Wyv9u8xNhx97V');
+    window.location.replace(OFFER);
   }
 }, 1000);
 function jump() {
   if (triggered) return;
   clearInterval(interval);
   triggered = true;
-  barEl.style.width = '100%';
-  setTimeout(function(){ window.location.replace('https://safeoffers.pro/a/Wyv9u8xNhx97V'); }, 150);
+  barEl.style.width = "100%";
+  setTimeout(function(){ window.location.replace(OFFER); }, 150);
 }
 </script>
 </body>
