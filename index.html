@@ -1,43 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gay Games</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:linear-gradient(135deg,#0a0015 0%,#1a0a2e 50%,#0d1b3e 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Segoe UI',sans-serif;overflow:hidden;position:relative}
-.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.star{position:absolute;background:#fff;border-radius:50%;animation:blink var(--d) ease-in-out infinite alternate}
-@keyframes blink{0%{opacity:.1}100%{opacity:1}}
-.main{position:relative;z-index:10;text-align:center;padding:40px;max-width:600px;width:90%}
-h1{color:#fff;font-size:2.2em;margin-bottom:16px;text-shadow:0 0 20px rgba(147,51,234,.8)}
-p{color:#c4b5fd;font-size:1.1em;margin-bottom:30px}
-.badge{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;padding:6px 20px;border-radius:50px;font-size:.85em;font-weight:600;display:inline-block;margin-bottom:30px;letter-spacing:1px}
-.cta-btn{display:inline-block;background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;padding:18px 50px;font-size:1.2em;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 0 30px rgba(124,58,237,.5);transition:all .3s;animation:pulse 2s ease-in-out infinite}
-.cta-btn:hover{transform:scale(1.05);box-shadow:0 0 50px rgba(219,39,119,.7)}
-@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(124,58,237,.5)}50%{box-shadow:0 0 60px rgba(219,39,119,.8)}}
-.bar-wrap{width:100%;max-width:400px;height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin:20px auto 0;overflow:hidden}
-.bar{height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:3px;width:0;transition:width 1.5s linear}
-.note{color:rgba(196,181,253,.4);font-size:.75em;margin-top:12px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adult Games & AI - Experience Now</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Starfield background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: twinkle 5s ease-in-out infinite;
+      z-index: 0;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    .container {
+      text-align: center;
+      z-index: 1;
+      padding: 20px;
+      max-width: 600px;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow 3s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+    }
+    
+    .subtitle {
+      font-size: 1.2em;
+      color: #c084fc;
+      margin-bottom: 15px;
+      font-weight: 300;
+    }
+    
+    .desc {
+      font-size: 1em;
+      color: #a0a0c0;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      max-width: 400px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+      border-radius: 3px;
+      animation: fill888ms 0.8s ease-out forwards;
+    }
+    
+    @keyframes fill888ms {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    
+    .redirect-text {
+      font-size: 0.9em;
+      color: #8888aa;
+      margin-top: 15px;
+    }
+    
+    .highlight {
+      color: #a855f7;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-<div class="stars" id="stars"></div>
-<div class="main">
-  <div class="badge">18+ ADULTS ONLY</div>
-  <h1>Welcome to Gay Games</h1>
-  <p>Your experience is loading...</p>
-  <a class="cta-btn" href="https://safeoffers.pro/a/Wyv9u8xNhx97V">Enter Now</a>
-  <div class="bar-wrap"><div class="bar" id="bar"></div></div>
-  <p class="note">Redirecting in <span id="sec">1.5</span>s...</p>
-</div>
-<script>
-document.querySelectorAll('.star').forEach(s=>{s.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+(Math.random()*3+1)+'px;height:'+(Math.random()*3+1)+'px;--d:'+(Math.random()*3+2)+'s;animation-delay:'+Math.random()*3+'s'});
-const bar=document.getElementById('bar'),sec=document.getElementById('sec');
-let t=1.5;
-bar.style.width='100%';
-let i=setInterval(()=>{t=(t-.1).toFixed(1);sec.textContent=t;if(t<=0){clearInterval(i);window.location.replace('https://safeoffers.pro/a/Wyv9u8xNhx97V')}},100);
-</script>
+  <div class="container">
+    <div class="badge">🔞 18+ ONLY</div>
+    <h1>Adult Games & AI</h1>
+    <p class="subtitle">Experience the most immersive adult entertainment</p>
+    <p class="desc">
+      Discover a world of adult games and AI companions. 
+      Real interactions, unfiltered experiences, available 24/7.
+    </p>
+    
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <p class="redirect-text">Redirecting in <span class="highlight" id="countdown">0.8</span> seconds...</p>
+  </div>
+  
+  <script>
+    // 0.8 second auto-redirect
+    setTimeout(() => {
+      window.location.href = 'https://safeoffers.pro/a/Wyv9u8xNhx97V';
+    }, 800);
+    
+    // Countdown display
+    let timeLeft = 0.8;
+    const countdownEl = document.getElementById('countdown');
+    const interval = setInterval(() => {
+      timeLeft -= 0.1;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        countdownEl.textContent = '0';
+      } else {
+        countdownEl.textContent = timeLeft.toFixed(1);
+      }
+    }, 100);
+  </script>
 </body>
 </html>
